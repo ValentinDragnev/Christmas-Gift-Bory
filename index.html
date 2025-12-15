@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Christmas Surprise</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(180deg, #0b3d2e, #06281e);
+      color: #ffffff;
+      font-family: Arial, Helvetica, sans-serif;
+      overflow: hidden;
+    }
+
+    .container {
+      text-align: center;
+      z-index: 2;
+      opacity: 0;
+      transform: scale(0.95);
+      transition: opacity 2s ease, transform 2s ease;
+    }
+
+    .visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      margin-bottom: 12px;
+    }
+
+    p {
+      font-size: 1.25rem;
+      opacity: 0;
+      transition: opacity 2s ease;
+    }
+
+    .show-message p {
+      opacity: 1;
+    }
+
+    /* Snowflakes */
+    .snowflake {
+      position: absolute;
+      top: -10px;
+      color: white;
+      user-select: none;
+      animation: fall linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(110vh);
+      }
+    }
+
+    /* Christmas glow */
+    .glow {
+      text-shadow: 0 0 10px #ffffff, 0 0 20px #ff4d4d, 0 0 30px #4dff4d;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container" id="content">
+    <h1 class="glow" id="title">🎄 Merry Christmas 🎄</h1>
+    <p id="message">Wishing you joy, health, and success in the coming year!</p>
+  </div>
+
+  <script>
+    /* Snow animation */
+    const snowflakeCount = 50;
+    const snowflakes = ['❄', '❅', '❆'];
+
+    for (let i = 0; i < snowflakeCount; i++) {
+      const snowflake = document.createElement('div');
+      snowflake.className = 'snowflake';
+      snowflake.textContent = snowflakes[Math.floor(Math.random() * snowflakes.length)];
+      snowflake.style.left = Math.random() * 100 + 'vw';
+      snowflake.style.animationDuration = 6 + Math.random() * 6 + 's';
+      snowflake.style.opacity = Math.random();
+      snowflake.style.fontSize = 12 + Math.random() * 20 + 'px';
+      document.body.appendChild(snowflake);
+    }
+
+    /* Personalization via QR URL parameters */
+    const params = new URLSearchParams(window.location.search);
+    const name = params.get('name');
+
+    if (name) {
+      document.getElementById('message').textContent = `Dear ${name}, wishing you joy, health, and success in the coming year!`;
+    }
+
+    /* Auto reveal sequence */
+    window.addEventListener('load', () => {
+      const content = document.getElementById('content');
+
+      // Fade in container
+      setTimeout(() => {
+        content.classList.add('visible');
+      }, 500);
+
+      // Reveal message automatically
+      setTimeout(() => {
+        content.classList.add('show-message');
+      }, 2500);
+    });
+
+    /*
+      QR USAGE:
+      1. Upload this file to hosting.
+      2. Create a QR code pointing to:
+         https://yourdomain.com/index.html?name=Anna
+      3. On scan, the animation and message play automatically.
+    */
+  </script>
+
+</body>
+</html>
