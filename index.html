@@ -1,126 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Christmas Surprise</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: linear-gradient(180deg, #0b3d2e, #06281e);
-      color: #ffffff;
-      font-family: Arial, Helvetica, sans-serif;
-      overflow: hidden;
-    }
-
-    .container {
-      text-align: center;
-      z-index: 2;
-      opacity: 0;
-      transform: scale(0.95);
-      transition: opacity 2s ease, transform 2s ease;
-    }
-
-    .visible {
-      opacity: 1;
-      transform: scale(1);
-    }
-
-    h1 {
-      font-size: 2.2rem;
-      margin-bottom: 12px;
-    }
-
-    p {
-      font-size: 1.25rem;
-      opacity: 0;
-      transition: opacity 2s ease;
-    }
-
-    .show-message p {
-      opacity: 1;
-    }
-
-    /* Snowflakes */
-    .snowflake {
-      position: absolute;
-      top: -10px;
-      color: white;
-      user-select: none;
-      animation: fall linear infinite;
-      pointer-events: none;
-    }
-
-    @keyframes fall {
-      to {
-        transform: translateY(110vh);
+  <head>
+    <meta charset="UTF-8" />
+    <title>Christmas Surprise</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(180deg, #cedad6, #4e4e4e);
+        color: #ffffff;
+        font-family: Arial, Helvetica, sans-serif;
+        overflow: hidden;
       }
-    }
 
-    /* Christmas glow */
-    .glow {
-      text-shadow: 0 0 10px #ffffff, 0 0 20px #ff4d4d, 0 0 30px #4dff4d;
-    }
-  </style>
-</head>
-<body>
+      .container {
+        text-align: center;
+        z-index: 2;
+        opacity: 0;
+        transform: scale(0.95);
+        transition: opacity 2s ease, transform 2s ease;
+      }
 
-  <div class="container" id="content">
-    <h1 class="glow" id="title">🎄 Merry Christmas 🎄</h1>
-    <p id="message">Wishing you joy, health, and success in the coming year!</p>
-  </div>
+      .visible {
+        opacity: 1;
+        transform: scale(1);
+      }
 
-  <script>
-    /* Snow animation */
-    const snowflakeCount = 50;
-    const snowflakes = ['❄', '❅', '❆'];
+      h1 {
+        font-size: 2.2rem;
+        margin-bottom: 12px;
+      }
 
-    for (let i = 0; i < snowflakeCount; i++) {
-      const snowflake = document.createElement('div');
-      snowflake.className = 'snowflake';
-      snowflake.textContent = snowflakes[Math.floor(Math.random() * snowflakes.length)];
-      snowflake.style.left = Math.random() * 100 + 'vw';
-      snowflake.style.animationDuration = 6 + Math.random() * 6 + 's';
-      snowflake.style.opacity = Math.random();
-      snowflake.style.fontSize = 12 + Math.random() * 20 + 'px';
-      document.body.appendChild(snowflake);
-    }
+      p {
+        font-size: 1.25rem;
+        opacity: 0;
+        transition: opacity 2s ease;
+      }
 
-    /* Personalization via QR URL parameters */
-    const params = new URLSearchParams(window.location.search);
-    const name = params.get('name');
+      .show-message p {
+        opacity: 1;
+      }
 
-    if (name) {
-      document.getElementById('message').textContent = `Dear ${name}, wishing you joy, health, and success in the coming year!`;
-    }
+      /* Snowflakes */
+      .snowflake {
+        position: absolute;
+        top: -10px;
+        color: white;
+        user-select: none;
+        animation: fall linear infinite;
+        pointer-events: none;
+      }
 
-    /* Auto reveal sequence */
-    window.addEventListener('load', () => {
-      const content = document.getElementById('content');
+      @keyframes fall {
+        to {
+          transform: translateY(110vh);
+        }
+      }
 
-      // Fade in container
-      setTimeout(() => {
-        content.classList.add('visible');
-      }, 500);
+      /* Christmas glow */
+      .glow {
+        text-shadow: 0 0 10px #817676, 0 0 20px #ff4d4d, 0 0 30px #eed5b9;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container" id="content">
+      <h1 class="glow" id="title">🎄Весела Коледа, Пламъченце🎄</h1>
+      <p id="message">
+        Знаеш ли, въпреки всичко което мислехме и планирахме, нашата Коледа се
+        случи така както си я говорихме и мислехме. Да, дойде по път по който не
+        беше желан, но въпреки това сме заедно във все още нашия дом и
+        заобиколени от здрави и щастливи родители.
+        <br />
+        Знам какво желаеш и знам какви са притесненията ти, особено относно
+        сумата. Искам обаче да знаеш, че те подкрепям и че искам да направя
+        първата стъпка към осъществяването на това твое желание.
+        <br />
+        С прочитането на тези редове ти „заключи“ сумата от
+        <span style="font-size: 1.1rem; color: #eed5b9">
+          200лв или 102,18 EURO
+        </span>
+        в моя Revolut акаунт. Тя ще ти бъде преведена в момента, в който решиш,
+        че разполагаме с нужната сума, без тези 200 лв. <br />
+        Искам да знаеш, че винаги ще те подкрепям във всичко, което те кара да
+        се чувстваш добре. А дрехите са бонус-нали все говорим, че искаме да
+        се обличаме по-стилно, дори и вкъщи. Надявам се да ти харесат.
 
-      // Reveal message automatically
-      setTimeout(() => {
-        content.classList.add('show-message');
-      }, 2500);
-    });
+        <br /><br /><br />
+        <span style="text-align: center">
+          Обичам те днес, утре и завинаги!
+        </span>
+        <br><br>
+        от ЛЮБОВЧЕТО! 
+      </p>
+    </div>
 
-    /*
+    <script>
+      /* Snow animation */
+      const snowflakeCount = 50;
+      const snowflakes = ["❄", "❅", "❆"];
+
+      for (let i = 0; i < snowflakeCount; i++) {
+        const snowflake = document.createElement("div");
+        snowflake.className = "snowflake";
+        snowflake.textContent =
+          snowflakes[Math.floor(Math.random() * snowflakes.length)];
+        snowflake.style.left = Math.random() * 100 + "vw";
+        snowflake.style.animationDuration = 6 + Math.random() * 6 + "s";
+        snowflake.style.opacity = Math.random();
+        snowflake.style.fontSize = 12 + Math.random() * 20 + "px";
+        document.body.appendChild(snowflake);
+      }
+
+      /* Personalization via QR URL parameters */
+      const params = new URLSearchParams(window.location.search);
+      const name = params.get("name");
+
+      if (name) {
+        document.getElementById(
+          "message"
+        ).textContent = `Dear ${name}, wishing you joy, health, and success in the coming year!`;
+      }
+
+      /* Auto reveal sequence */
+      window.addEventListener("load", () => {
+        const content = document.getElementById("content");
+
+        // Fade in container
+        setTimeout(() => {
+          content.classList.add("visible");
+        }, 500);
+
+        // Reveal message automatically
+        setTimeout(() => {
+          content.classList.add("show-message");
+        }, 2500);
+      });
+
+      /*
       QR USAGE:
       1. Upload this file to hosting.
       2. Create a QR code pointing to:
          https://yourdomain.com/index.html?name=Anna
       3. On scan, the animation and message play automatically.
     */
-  </script>
-
-</body>
+    </script>
+  </body>
 </html>
